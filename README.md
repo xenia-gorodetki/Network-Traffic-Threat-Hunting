@@ -7,11 +7,11 @@ The following standard background activities were identified:
 
 * **Encrypted Background Services (DNS & QUIC):** Even in an idle state, the system actively communicates with Google and Apple services. DNS queries to `calendar.google.com`, `help.apple.com`, and `cds.apple.com` were observed.
   
-  ![DNS Queries for Background Services](images/dns.jpg)
+  ![DNS Queries for Background Services](images/dns.png)
 
   The system calendar synchronizes data using the QUIC protocol, which is a modern, faster replacement for traditional TCP+TLS.
   
-  ![QUIC Protocol Traffic](images/quic.jpg)
+  ![QUIC Protocol Traffic](images/quic.png)
 
 * **Time Synchronization (NTP):** Regular automated communication on UDP port 123 was captured. The system utilizes NTP Version 4 (Network Time Protocol) to continuously verify and synchronize accurate time against internet servers.
 
