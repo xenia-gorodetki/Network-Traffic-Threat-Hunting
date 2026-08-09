@@ -58,15 +58,15 @@ Shortly after the reconnaissance phase, the script initiated the download of the
   2. **File Masking & Redirect:** Analysis of the TCP stream revealed an `HTTP 301 Moved Permanently` response. The server actively redirected the unencrypted download request to a secure HTTPS connection (port 443). This is a known defense evasion technique intended to hide the malicious file's Magic Bytes (e.g., `MZ` for executables) from deep packet inspection and network intrusion detection systems.
 
 ![Missing User-Agent in Request](images/port1389.png)
-![TCP Stream showing HTTP 301 Redirect](images/tcp.stream eq 69.png)
-![Redirect to HTTPS Port 443](images/port1369 tcp stream.png)
+![TCP Stream showing HTTP 301 Redirect](images/tcp.stream_eq_69.png)
+![Redirect to HTTPS Port 443](images/port1369_tcp_stream.png)
 
 ### Phase 4: Command & Control (C2) Exfiltration
 Because RedLine Stealer often uses custom communication protocols instead of standard web forms, the analysis shifted to monitoring new, outbound TCP handshakes initiated by the victim (`ip.src == 10.7.10.47 and tcp.flags.syn == 1 and tcp.flags.ack == 0`).
 * **Findings:** Following the payload execution, the infected machine established a new connection to a completely unknown IP address `194.26.135.119`.
 * **Anomaly Detected:** The communication was directed to Destination Port `12432`. Legitimate web traffic typically uses ports 80 or 443. The use of a high, non-standard port is highly characteristic of malware establishing an encrypted C2 channel to exfiltrate stolen credentials and browser data.
 
-![C2 Server Connection on Port 12432](images/c2 server.png)
+![C2 Server Connection on Port 12432](images/c2_server.png)
 
 ---
 
