@@ -25,4 +25,4 @@ The following standard background activities were identified:
   
   Simultaneously, a significant volume of TCP packets flagged with `[RST, ACK]` was recorded between local IP addresses. In a baseline state, this occurs when one device attempts a connection on a specific port to verify service availability, but the target device actively refuses (resets) it because the requested service is currently inactive or asleep.
 
-  ![mDNS Queries and TCP RST Packets](images/mdns&rst&ack.jpg)
+  ![mDNS Queries and TCP RST Packets](images/mdns&rst&ack.png)
