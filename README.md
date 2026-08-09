@@ -1,4 +1,10 @@
-# Network-Traffic-Threat-Hunting
+# Network Traffic Forensics: Baseline & RedLine Stealer Analysis
+
+## Project Context & Acknowledgements
+This repository documents a two-part network traffic analysis project. The first part establishes a baseline of normal network activity. The second part is a threat hunting exercise focusing on detecting a malware infection. 
+
+**Disclaimer:** The malicious packet capture (PCAP) analyzed in Part 2 was sourced from [Malware-Traffic-Analysis.net](https://www.malware-traffic-analysis.net/), an industry-standard resource for cybersecurity training. The analysis, filtering, and reporting presented here are my own independent work conducted in Wireshark.
+
 ## Part 1: Normal Network Baseline (macOS Idle State)
 
 Before hunting for anomalous or malicious activity, it is critical to establish a baseline of a healthy network. A packet capture was performed on a macOS device in an idle state (all user applications closed) on the local Wi-Fi interface (en0). 
