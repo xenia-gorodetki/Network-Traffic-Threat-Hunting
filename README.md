@@ -25,13 +25,13 @@ The following standard background activities were identified:
 
 * **Local Network Maintenance (ARP & ICMP):** The local TP-Link router actively maintains network state. It utilizes ARP broadcasts to resolve the MAC addresses of connected devices. Additionally, the router sends ICMP Echo (ping) requests to the host machine, which immediately responds with Echo replies, verifying device availability. The capture also recorded minor packet loss resulting in standard TCP Retransmissions.
 
-  ![ICMP, ARP and TCP Retransmissions](images/tcprts&icmp.jpg)
+  ![ICMP, ARP and TCP Retransmissions](images/tcprts_icmp.jpg)
 
 * **Apple Ecosystem Discovery (mDNS) & Unsuccessful Handshakes (TCP RST):** Multicast DNS traffic querying the `_companion-link._tcp.local` service was frequent. This is expected behavior within the Apple ecosystem, facilitating connection features like Continuity, Handoff, and Universal Control between Mac and iOS devices. 
   
   Simultaneously, a significant volume of TCP packets flagged with `[RST, ACK]` was recorded between local IP addresses. In a baseline state, this occurs when one device attempts a connection on a specific port to verify service availability, but the target device actively refuses (resets) it because the requested service is currently inactive or asleep.
 
-  ![mDNS Queries and TCP RST Packets](images/mdns&rst&ack.png)
+  ![mDNS Queries and TCP RST Packets](images/mdns_rst_ack.png)
 
 ## Part 2: Threat Detection & Incident Analysis (RedLine Stealer Infection)
 
