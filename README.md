@@ -92,12 +92,15 @@ Because RedLine Stealer often uses custom communication protocols instead of sta
 
 ### Phase 5: Data Exfiltration & File Carving
 Analyzing the established C2 channel on port `12432` via TCP streams revealed the exact data targeted and successfully exfiltrated by the RedLine Stealer.
+
 * **Findings:** The malware actively searched for sensitive files, browser credentials, and cryptocurrency wallets within the `%userprofile%` directory.
 * **Advanced File Carving:** By exporting the raw binary data from the C2 TCP stream and analyzing it in a Hex Editor, a hidden PNG file was extracted. By identifying the PNG Magic Bytes (`89 50 4E 47`) and stripping the preceding network traffic overhead, a screenshot of the victim's desktop at the time of infection was successfully recovered.
-* **Exfiltrated Assets:** Inspecting the plaintext ASCII stream revealed the exfiltration of a specific Word document (`Top_secret_ducment.docx`) and identified the execution of the initial malicious script (`mystery_file.ps1`).
 
 ![Raw Binary Data in Hex Editor](images/raw_data_png.jpg)
 ![Recovered Victim Desktop Screenshot](images/screenshot.png)
+
+* **Exfiltrated Assets:** Inspecting the plaintext ASCII stream revealed the exfiltration of a specific Word document (`Top_secret_ducment.docx`) and identified the execution of the initial malicious script (`mystery_file.ps1`).
+
 ![Exfiltrated Word Document in TCP Stream](images/top_secret_dokument.png)
 ![Malicious PowerShell Script Execution](images/mystery_file.png)
 
