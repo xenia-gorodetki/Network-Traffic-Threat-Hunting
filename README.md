@@ -42,10 +42,16 @@ This section analyzes a packet capture (PCAP) containing a real-world malware in
   
 ### Phase 1: Victim Identification
 The investigation began by identifying the compromised host within the local network. By filtering for DHCP traffic (`bootp`), the initial IP lease request and acknowledgment were analyzed.
-* **Findings:** The victim's machine requested and was assigned the IP address `10.7.10.47`. The DHCP Request packet revealed the victim's Host Name as `DESKTOP-9PEA63H`.
+The investigation began by identifying the compromised host within the local network. By filtering for DHCP traffic (`bootp`), the initial IP lease request and acknowledgment were analyzed. Further analysis of Kerberos authentication traffic (`kerberos.CNameString`) confirmed the active user account.
+* **Findings:** 
+  * **IP Address:** `10.7.10.47`
+  * **MAC Address:** `80:86:5b:ab:1e:c4`
+  * **Host Name:** `DESKTOP-9PEA63H`
+  * **User Account:** `rwalters`
 
 ![DHCP Request showing Host Name](images/bootp.png)
 ![DHCP Acknowledgment](images/dhcp.png)
+![Kerberos Authentication revealing User Account](images/rwalters.png)
 
 ### Phase 2: Initial Access & Reconnaissance (Staging)
 To find the infection vector, HTTP traffic was filtered (`http.request.method == "GET"`). Suspicious outbound connections from the victim's IP were identified, revealing automated scripts rather than legitimate user browsing.
